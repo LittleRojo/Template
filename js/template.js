@@ -4,7 +4,7 @@ var WebVRConfig = {
 	CARDBOARD_UI_DISABLED: true, 
 }	
 
-var socket = io.connect('http://' + document.domain + ':9902/WSConnect', { transports: ['websocket'] } );
+var socket = io.connect('https://' + document.domain + ':9902/WSConnect', { transports: ['websocket'] } );
 
 function getDirectionalLight( _ ) {
 	var directionalLight = new THREE.DirectionalLight( _.color, _.intensity );				
