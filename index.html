@@ -15,7 +15,7 @@
 		<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale = 1.0, minimum-scale=1.0, maximum-scale=1.0'/>
 
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
-		
+
 		<script type="text/javascript" src='js/template.js'></script>
 		<script type="text/javascript" src='js/three.min.js'></script>
 		<script type="text/javascript" src="js/webvr-polyfill.js"></script>		
@@ -37,11 +37,28 @@
     </head>
 	<body style="margin:0px" bgcolor="black">
 		<script>
-			function animateScene( delta ) {								
+			socket.on('connect', function() {
+				socket.emit('join', { room: "WSConnect" });          
+			});
+			socket.on('disconnect', function() {
+				socket.emit('leave', { room: "WSConnect" }); 
+			});
+			socket.on('my response', function( msg ) {
+				//response
+			});
+
+			//socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
+			//socket.emit('join', {room: $('#join_room').val()});
+			//socket.emit('leave', {room: $('#leave_room').val()});
+			//socket.emit('my room event', {room: $('#room_name').val(), data: $('#room_data').val()});
+			//socket.emit('close room', {room: $('#close_room').val()});
+			//socket.emit('disconnect request');
+
+			function drawScene( scene ) {			
 				
 			}
 
-			function drawScene( scene ) {			
+			function animateScene( delta ) {								
 				
 			}
 		</script>

@@ -5,41 +5,6 @@ var WebVRConfig = {
 }	
 
 var socket = io.connect('http://' + document.domain + ':9902/WSConnect', { transports: ['websocket'] } );
-socket.on('connect', function() {
-	//connect                
-});
-socket.on('disconnect', function() {
-	//disconnected
-});
-socket.on('my response', function( msg ) {
-	if( msg.data != "Connected") {
-
-		var image = new Image();
-		image.src = msg.data;
-		image.onload = function () {
-			var object = getBox( {
-				x: rand( -450, 900),
-				//y: rand( -100, 100),
-				z: rand( -450, 900),
-				width: image.width,
-				height:  image.height,
-				depth:  rand( 10, 100),	
-				color: 0xFFFFFF,								
-			} );
-			object.material.map = new THREE.Texture();
-			object.material.map.image = image;
-			object.material.map.needsUpdate = true;
-			scene.add( object );
-		};		
-	}
-});
-
-//socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
-//socket.emit('join', {room: $('#join_room').val()});
-//socket.emit('leave', {room: $('#leave_room').val()});
-//socket.emit('my room event', {room: $('#room_name').val(), data: $('#room_data').val()});
-//socket.emit('close room', {room: $('#close_room').val()});
-//socket.emit('disconnect request');
 
 function getDirectionalLight( _ ) {
 	var directionalLight = new THREE.DirectionalLight( _.color, _.intensity );				
